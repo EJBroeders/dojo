@@ -70,6 +70,12 @@
 			// `global` is also defined in NodeJS
 			return global;
 		}
+        else if (typeof this.global !== 'undefined' && typeof this.global !== 'function') {
+            // There is an annoying bug that if you follow the guide on
+            // https://dojotoolkit.org/documentation/tutorials/1.9/node/
+            // then the global variable is bound to this
+			return this.global;
+		}
 		else if (typeof window !== 'undefined') {
 			// window is defined in browsers
 			return window;
